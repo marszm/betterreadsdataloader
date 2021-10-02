@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Secure Bundele ###
+/src/main/resources/secure-connect.zip
