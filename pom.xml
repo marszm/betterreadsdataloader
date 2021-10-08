@@ -14,19 +14,14 @@
     <name>betterreadsdataloader</name>
     <description>betterreadsdataloader</description>
     <properties>
-
         <!-- Core -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>11</java.version>
-
         <!-- Cassandra driver -->
         <cassandra-java-driver.version>4.8.0</cassandra-java-driver.version>
         <cassandra-native-protocol.version>1.4.11</cassandra-native-protocol.version>
-
     </properties>
-
     <dependencies>
-
         <!-- Spring Boot + Spring Data Cassandra -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -37,7 +32,6 @@
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
         </dependency>
-
         <!-- Cassandra driver -->
         <dependency>
             <groupId>com.datastax.oss</groupId>
@@ -67,7 +61,7 @@
             <scope>runtime</scope>
             <optional>true</optional>
         </dependency>
-            <dependency>
+        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
@@ -98,5 +92,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>

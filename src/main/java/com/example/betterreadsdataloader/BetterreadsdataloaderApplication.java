@@ -79,6 +79,6 @@ public class BetterreadsdataloaderApplication {
         initAuthors();
         long stop = System.currentTimeMillis();
         log.info("stop");
-        log.info("time between start and stop: "+ (stop - start));
+        log.info("data loaded in: "+ (stop - start));
     }
 }
