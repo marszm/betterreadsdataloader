@@ -4,6 +4,7 @@ import com.example.betterreadsdataloader.author.Author;
 import com.example.betterreadsdataloader.author.AuthorRepository;
 import com.example.betterreadsdataloader.connection.DataStaxAstraProperties;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.cassandra.CqlSessionBuilderCustomizer;
@@ -20,6 +21,12 @@ public class BetterreadsdataloaderApplication {
     public static void main(String[] args) {
         SpringApplication.run(BetterreadsdataloaderApplication.class, args);
     }
+
+    @Value("${datadump.location.author}")
+    private String authorDumpLocation;
+
+    @Value("${datadump.location.works}")
+    private String worksDumpLocation;
 
     @Autowired
     AuthorRepository authorRepository;
