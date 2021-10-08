@@ -3,6 +3,7 @@ package com.example.betterreadsdataloader;
 import com.example.betterreadsdataloader.author.Author;
 import com.example.betterreadsdataloader.author.AuthorRepository;
 import com.example.betterreadsdataloader.connection.DataStaxAstraProperties;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
@@ -23,6 +24,7 @@ import java.util.stream.Stream;
 
 @SpringBootApplication
 @EnableConfigurationProperties(DataStaxAstraProperties.class)
+@Slf4j
 public class BetterreadsdataloaderApplication {
     public static void main(String[] args) {
         SpringApplication.run(BetterreadsdataloaderApplication.class, args);
@@ -72,11 +74,11 @@ public class BetterreadsdataloaderApplication {
 
     @PostConstruct
     public void run() {
-        System.out.println("start");
+        log.info("start");
         long start = System.currentTimeMillis();
         initAuthors();
         long stop = System.currentTimeMillis();
-        System.out.println("stop");
-        System.out.println("time between start and stop: "+ (stop - start));
+        log.info("stop");
+        log.info("time between start and stop: "+ (stop - start));
     }
 }
