@@ -36,12 +36,15 @@ public class BetterreadsdataloaderApplication {
     @Value("${datadump.location.works}")
     private String worksDumpLocation;
 
+    @Value("datastax.astra.secure-connection-bundle")
+    private String secureConnectionBundle;
+
     @Autowired
     AuthorRepository authorRepository;
 
     @Bean
-    public CqlSessionBuilderCustomizer sessionBuilderCustomizer(DataStaxAstraProperties dataStaxAstraProperties) {
-        return cqlSessionBuilder -> cqlSessionBuilder.withCloudSecureConnectBundle(Paths.get("src/main/resources/secure-connect.zip"));
+    public CqlSessionBuilderCustomizer sessionBuilderCustomizer() {
+        return cqlSessionBuilder -> cqlSessionBuilder.withCloudSecureConnectBundle(Paths.get(secureConnectionBundle));
     }
 
     private void initAuthors(){
