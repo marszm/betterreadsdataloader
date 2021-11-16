@@ -18,7 +18,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>17</java.version>
         <!-- Cassandra driver -->
-        <cassandra-java-driver.version>4.8.0</cassandra-java-driver.version>
+        <cassandra-java-driver.version>4.13.0</cassandra-java-driver.version>
         <cassandra-native-protocol.version>1.4.11</cassandra-native-protocol.version>
     </properties>
     <dependencies>
