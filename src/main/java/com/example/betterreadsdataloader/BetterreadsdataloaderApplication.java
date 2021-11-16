@@ -47,7 +47,7 @@ public class BetterreadsdataloaderApplication {
         return cqlSessionBuilder -> cqlSessionBuilder.withCloudSecureConnectBundle(Paths.get(secureConnectionBundle));
     }
 
-    private void initAuthors(){
+    private void initAuthors() {
         Path path = Paths.get(authorDumpLocation);
         try {
             Stream<String> lines = Files.lines(path);
@@ -55,14 +55,11 @@ public class BetterreadsdataloaderApplication {
                 String jsonString = line.substring(line.indexOf("{"));
                 JSONObject jsonObject = new JSONObject();
                 try {
-                     jsonObject = new JSONObject(jsonString);
+                    jsonObject = new JSONObject(jsonString);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                Author author = new Author();
-                author.setName(jsonObject.optString("name"));
-                author.setPersonalName(jsonObject.optString("personal_name"));
-                author.setId(jsonObject.optString("key").replace("/authors/", ""));
+                Author author = new Author(jsonObject.optString("key").replace("/authors/", ""),jsonObject.optString("name"),jsonObject.optString("personal_name"));
                 authorRepository.save(author);
             });
 
@@ -71,7 +68,7 @@ public class BetterreadsdataloaderApplication {
         }
     }
 
-    private void initWorks(){
+    private void initWorks() {
 
     }
 
@@ -82,6 +79,6 @@ public class BetterreadsdataloaderApplication {
         initAuthors();
         long stop = System.currentTimeMillis();
         log.info("stop");
-        log.info("data loaded in: "+ (stop - start));
+        log.info("data loaded in: " + (stop - start));
     }
 }

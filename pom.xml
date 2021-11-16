@@ -16,7 +16,7 @@
     <properties>
         <!-- Core -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>11</java.version>
+        <java.version>17</java.version>
         <!-- Cassandra driver -->
         <cassandra-java-driver.version>4.8.0</cassandra-java-driver.version>
         <cassandra-native-protocol.version>1.4.11</cassandra-native-protocol.version>
@@ -73,8 +73,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
                     <release>${java.version}</release>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
+                    <source>16</source>
+                    <target>16</target>
                     <showWarnings>false</showWarnings>
                 </configuration>
             </plugin>
