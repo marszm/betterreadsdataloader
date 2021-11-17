@@ -15,7 +15,7 @@ public record Author(
         @Column("author_name")
         @CassandraType(type = CassandraType.Name.TEXT)
         String name,
-        @Column("peronal_name")
+        @Column("personal_name")
         @CassandraType(type = CassandraType.Name.TEXT)
         String personalName) {
 }
