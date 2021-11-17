@@ -90,5 +90,6 @@
                 </configuration>
             </plugin>
         </plugins>
+        <finalName>betterreads</finalName>
     </build>
 </project>
