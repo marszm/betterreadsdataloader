@@ -36,7 +36,7 @@ public class BetterreadsdataloaderApplication {
     @Value("${datadump.location.works}")
     private String worksDumpLocation;
 
-    @Value("datastax.astra.secure-connection-bundle")
+    @Value("${datastax.astra.secure-connection-bundle}")
     private String secureConnectionBundle;
 
     @Autowired
