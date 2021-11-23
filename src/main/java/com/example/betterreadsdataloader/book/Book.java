@@ -19,8 +19,5 @@ public record Book(
         String name,
         @Column("personal_name")
         @CassandraType(type = CassandraType.Name.DATE)
-        LocalDate publishedDate,
-        @Column("personal_name")
-        @CassandraType(type = CassandraType.Name.TEXT)
-        String personalName) {
+        LocalDate publishedDate) {
 }

@@ -4,13 +4,13 @@ import com.example.betterreadsdataloader.author.Author;
 import com.example.betterreadsdataloader.author.AuthorRepository;
 import com.example.betterreadsdataloader.connection.DataStaxAstraProperties;
 import lombok.extern.slf4j.Slf4j;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.cassandra.CqlSessionBuilderCustomizer;
-import org.springframework.boot.configurationprocessor.json.JSONException;
-import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 
@@ -51,7 +51,7 @@ public class BetterreadsdataloaderApplication {
         Path path = Paths.get(authorDumpLocation);
         try {
             Stream<String> lines = Files.lines(path);
-            lines.limit(5).forEach(line -> {
+            lines.forEach(line -> {
                 String jsonString = line.substring(line.indexOf("{"));
                 JSONObject jsonObject = new JSONObject();
                 try {
@@ -59,8 +59,9 @@ public class BetterreadsdataloaderApplication {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                Author author = new Author(jsonObject.optString("key").replace("/authors/", ""),jsonObject.optString("name"),jsonObject.optString("personal_name"));
-                authorRepository.save(author);
+                Author author = new Author(jsonObject.optString("key").replace("/authors/", ""), jsonObject.optString("name"), jsonObject.optString("personal_name"));
+                log.info("author: " + author);
+                authorRepository.insert(author).subscribe();
             });
 
         } catch (IOException e) {
@@ -69,7 +70,6 @@ public class BetterreadsdataloaderApplication {
     }
 
     private void initWorks() {
-
     }
 
     @PostConstruct
@@ -77,6 +77,7 @@ public class BetterreadsdataloaderApplication {
         log.info("start");
         long start = System.currentTimeMillis();
         initAuthors();
+//        initWorks();
         long stop = System.currentTimeMillis();
         log.info("stop");
         log.info("data loaded in: " + (stop - start));
