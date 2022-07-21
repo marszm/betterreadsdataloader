@@ -16,4 +16,4 @@ public class BetterreadsdataloaderApplication {
     public static void main(String[] args) {
         SpringApplication.run(BetterreadsdataloaderApplication.class, args);
     }
-}
+    }

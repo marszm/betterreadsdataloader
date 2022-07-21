@@ -32,11 +32,11 @@ public record Book(
         @CassandraType(type = CassandraType.Name.LIST, typeArguments = CassandraType.Name.TEXT)
         List<String> coverIds,
 
-        @Column("author_names")
-        @CassandraType(type = CassandraType.Name.LIST, typeArguments = CassandraType.Name.TEXT)
-        List<String> authorNames,
+//        @Column("author_names")
+//        @CassandraType(type = CassandraType.Name.LIST, typeArguments = CassandraType.Name.TEXT)
+//        List<String> authorNames,
 
         @Column("author_id")
         @CassandraType(type = CassandraType.Name.LIST, typeArguments = CassandraType.Name.TEXT)
-        List<String> authorId) {
+        List<String> authorIds ) {
 }

@@ -12,9 +12,11 @@ public record Author(
         @Id
         @PrimaryKeyColumn(name = "author_id", ordinal = 0, type = PrimaryKeyType.PARTITIONED)
         String id,
+
         @Column("author_name")
         @CassandraType(type = CassandraType.Name.TEXT)
         String name,
+
         @Column("personal_name")
         @CassandraType(type = CassandraType.Name.TEXT)
         String personalName) {
